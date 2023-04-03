@@ -9,13 +9,16 @@
     <h1>Blake's Classic Bananas</h1>
     @foreach (var obj in Model) if (obj.Category == "Bananas")
     {
-        <div class="products">
-            <h1>@obj.Name</h1>
+        <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
+            @if(@obj.Name.Length <= 30){
+                <h1 class="smallerTitle">@obj.Name</h1>
+            }else{
+                <h1>@obj.Name</h1>
+            }
                 <img src="@obj.ImagePath" />
                 <h2>$@obj.Price</h2>
-            <button>Add to Cart</button>
             <p>@obj.Description</p>
-        </div>
+        </a>
 
 
     }
@@ -23,35 +26,32 @@
     @foreach (var obj in Model) if (obj.Category == "Merch")
         {
 
-            <div class="products">
+            <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
             <h1>@obj.Name</h1>
                 <img src="@obj.ImagePath" />
                 <h2>$@obj.Price</h2>
-            <button>Add to Cart</button>
             <p>@obj.Description</p>
-        </div>
+        </a>
         }
     <h1>Blake's Bananas Other Food Products</h1>
     @foreach (var obj in Model) if (obj.Category == "OtherFood")
         {
-            <div class="products">
+            <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
                 <h1>@obj.Name</h1>
                 <img src="@obj.ImagePath" />
                 <h2>$@obj.Price</h2>
-                <button>Add to Cart</button>
                 <p>@obj.Description</p>
-            </div>
+            </a>
         }
     <h1>Blake's Bananas Gift Cards and Tour Pricing</h1>
     @foreach (var obj in Model) if (obj.Category == "Gift/Tour")
         {
-            <div class="products">
+            <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
                 <h1>@obj.Name</h1>
                 <img src="@obj.ImagePath" />
                 <h2>$@obj.Price</h2>
-                <button>Add to Cart</button>
                 <p>@obj.Description</p>
-            </div>
+            </a>
         }
 </div>
        
