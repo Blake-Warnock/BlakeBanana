@@ -3,32 +3,56 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Products</h1>
+<h1>All Products</h1>
 
-<table class="table table-bordered table-striped style="width:1000%"">
-    <thead>
-        <tr>
-            <th>
-                Product Name
-            </th>
-            <th>
-                Discription
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var obj in Model)
+<div class="product-container">
+    <h1>Blake's Classic Bananas</h1>
+    @foreach (var obj in Model) if (obj.Category == "Bananas")
+    {
+        <div class="products">
+            <h1>@obj.Name</h1>
+                <img src="@obj.ImagePath" />
+                <h2>$@obj.Price</h2>
+            <button>Add to Cart</button>
+            <p>@obj.Description</p>
+        </div>
+
+
+    }
+    <h1>Blake's Bananas Merch</h1>
+    @foreach (var obj in Model) if (obj.Category == "Merch")
         {
-            <tr>
-                <td width="50%">
-                    @obj.Name
-                </td>
-                    <td width="30%">
-                    @obj.Description
-                    </td>
-            </tr>
+
+            <div class="products">
+            <h1>@obj.Name</h1>
+                <img src="@obj.ImagePath" />
+                <h2>$@obj.Price</h2>
+            <button>Add to Cart</button>
+            <p>@obj.Description</p>
+        </div>
         }
-    </tbody>
-
-</table>
-
+    <h1>Blake's Bananas Other Food Products</h1>
+    @foreach (var obj in Model) if (obj.Category == "OtherFood")
+        {
+            <div class="products">
+                <h1>@obj.Name</h1>
+                <img src="@obj.ImagePath" />
+                <h2>$@obj.Price</h2>
+                <button>Add to Cart</button>
+                <p>@obj.Description</p>
+            </div>
+        }
+    <h1>Blake's Bananas Gift Cards and Tour Pricing</h1>
+    @foreach (var obj in Model) if (obj.Category == "Gift/Tour")
+        {
+            <div class="products">
+                <h1>@obj.Name</h1>
+                <img src="@obj.ImagePath" />
+                <h2>$@obj.Price</h2>
+                <button>Add to Cart</button>
+                <p>@obj.Description</p>
+            </div>
+        }
+</div>
+       
+ 

@@ -18,5 +18,10 @@ namespace BlakeBananaWeb.Controllers
             IEnumerable<Products> products = _context.Products;
             return View(products);
         }
+        public IActionResult Category()
+        {
+            IEnumerable<Products> products = _context.Products;
+            return View(products);
+        }
     }
 }

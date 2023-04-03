@@ -33,3 +33,48 @@ footer {
 .navbar-nav.flex-grow-1.account {
     margin-left: 60%;
 }
+
+.product-container{
+    position: relative;
+    left: -12%;
+    border: solid;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 128%;
+}
+
+.product-container h1{
+    margin:  3%
+}
+
+.products {
+    width: 30em;
+    display: inline-block;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border: solid
+}
+
+.products h1, .products h2{
+    text-align: center;
+    display: block;
+    font-size: 2em;
+}
+
+.products img{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.products button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.products h2 {
+}

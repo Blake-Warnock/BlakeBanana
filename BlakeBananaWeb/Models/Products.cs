@@ -1,4 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace BlakeBananaWeb.Models
 {
@@ -11,6 +15,8 @@ namespace BlakeBananaWeb.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        public string ImagePath { get; set; }
+        public string Category { get; set; }
 
     }
 }
