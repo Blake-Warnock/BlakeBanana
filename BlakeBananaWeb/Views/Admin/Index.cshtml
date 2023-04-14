@@ -1,12 +1,19 @@
 ﻿@model IEnumerable<BlakeBananaWeb.Models.Products>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var user = await @UserManager.GetUserAsync(User)!;
 }
 
-<h1>Index</h1>
 
+@if (user.EmailConfirmed == true)
+{
+    <h1>Admin</h1>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -46,3 +53,7 @@
 }
     </tbody>
 </table>
+}else{
+        <h1>You do not have access to this page!</h1>
+    <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Click here to log into an account that does have access!</a>
+}

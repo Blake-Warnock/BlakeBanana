@@ -2,7 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Wellllcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="index">
+    <h1 class="display-4">Welcome to Blake's Banannas!</h1>
+    <div class="index-img-container">
+        <img id="index-img" src="~/images/index-img.jpg"/>
+        <div class="d-grid gap-2">
+            <input class="btn btn-lg btn-secondary" type="button" value="Start Shopping Now!" onclick="location.href='@Url.Action("Index", "Product")'" />
+        </div>
+    </div>
+    <div class="line-custom"></div>
+    <h1>Customer Reviews</h1>
+    <div class="review-container">
+        <div class="review">
+            <h3>Blooke Waroock</h3>
+            <img src="~/images/me.jpg"/>
+            <p>"I go bananas for Blake's Bananas"</p>
+        </div>
+        <div class="review">
+            <h3>Bluke Warlock</h3>
+            <img src="~/images/me.jpg"/>
+            <p>"It is by far the best place to buy banannas"</p>
+        </div>
+        <div class="review">
+            <h3>Blonge Warhock</h3>
+            <img src="~/images/me.jpg"/>
+            <p>"Every girl in my neighborhood is crazy for Blake's Banana</p>
+        </div>
+    </div>
+    <div class="line-custom"></div>
+    <h1>Blake's Bananas Resturant has been awarded Two Michelin Stars!</h1>
+    <div class="index-img-container">
+        <h1>To Celebrate From May 15th to June 15th 50% Off Appitizers!</h1>
+    <img id="index-img" src="~/images/resturant.jpg" />
+    <div class="d-grid gap-2">
+        <input class="btn btn-lg btn-secondary" type="button" value="View Gift Card Option!" onclick="location.href='@Url.Action("Index", "Product")'" />
+    </div>
+    </div>
 </div>

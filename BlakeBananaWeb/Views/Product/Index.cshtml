@@ -10,14 +10,22 @@
     @foreach (var obj in Model) if (obj.Category == "Bananas")
     {
         <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
-            @if(@obj.Name.Length <= 30){
-                <h1 class="smallerTitle">@obj.Name</h1>
-            }else{
+           
                 <h1>@obj.Name</h1>
-            }
-                <img src="@obj.ImagePath" />
-                <h2>$@obj.Price</h2>
-            <p>@obj.Description</p>
+                <div class="product-item">
+                    <img src="@obj.ImagePath" />
+                    @if (@obj.Size == "0")
+                    {
+                        <h2 class="J-price">Price: $@obj.Price</h2>
+                    }
+                    else
+                    {
+                        <h2>Price: $@obj.Price</h2>
+                        <div class="line"></div>
+                        <h2>Size: @obj.Size</h2>
+                    }
+                    <p>@obj.Description</p>
+                </div>
         </a>
 
 
@@ -28,9 +36,20 @@
 
             <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
             <h1>@obj.Name</h1>
-                <img src="@obj.ImagePath" />
-                <h2>$@obj.Price</h2>
-            <p>@obj.Description</p>
+                <div class="product-item">
+                    <img src="@obj.ImagePath" />
+                    @if (@obj.Size == "0")
+                    {
+                        <h2 class="J-price">Price: $@obj.Price</h2>
+                    }
+                    else
+                    {
+                        <h2>Price: $@obj.Price</h2>
+                        <div class="line"></div>
+                        <h2>Size: @obj.Size</h2>
+                    }
+                    <p>@obj.Description</p>
+                </div>
         </a>
         }
     <h1>Blake's Bananas Other Food Products</h1>
@@ -38,9 +57,20 @@
         {
             <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
                 <h1>@obj.Name</h1>
-                <img src="@obj.ImagePath" />
-                <h2>$@obj.Price</h2>
-                <p>@obj.Description</p>
+                <div class="product-item">
+                    <img src="@obj.ImagePath" />
+                    @if (@obj.Size == "0")
+                    {
+                        <h2 class="J-price">Price: $@obj.Price</h2>
+                    }
+                    else
+                    {
+                        <h2>Price: $@obj.Price</h2>
+                        <div class="line"></div>
+                        <h2>Size: @obj.Size</h2>
+                    }
+                    <p>@obj.Description</p>
+                </div>
             </a>
         }
     <h1>Blake's Bananas Gift Cards and Tour Pricing</h1>
@@ -48,9 +78,20 @@
         {
             <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
                 <h1>@obj.Name</h1>
-                <img src="@obj.ImagePath" />
-                <h2>$@obj.Price</h2>
-                <p>@obj.Description</p>
+                <div class="product-item">
+                    <img src="@obj.ImagePath" />
+                    @if (@obj.Size == "0")
+                    {
+                        <h2 class="J-price">Price: $@obj.Price</h2>
+                    }
+                    else
+                    {
+                        <h2>Price: $@obj.Price</h2>
+                        <div class="line"></div>
+                        <h2>Type: @obj.Size</h2>
+                    }
+                    <p>@obj.Description</p>
+                </div>
             </a>
         }
 </div>

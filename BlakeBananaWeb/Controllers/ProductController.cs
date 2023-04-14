@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Web;
 using Microsoft.EntityFrameworkCore;
 using BlakeBananaWeb.Data;
 using BlakeBananaWeb.Models;
+using RestSharp;
 
 namespace BlakeBananaWeb.Controllers
 {
@@ -45,6 +47,14 @@ namespace BlakeBananaWeb.Controllers
             }
 
             return View(products);
+        }
+        public async Task<IActionResult> ViewCategory(string? passed)
+        {
+            var category = passed;
+            IEnumerable<Products> products = _context.Products;
+            ViewBag.Category = category;
+            ViewData["products"] = products;
+            return View();
         }
     }
 }

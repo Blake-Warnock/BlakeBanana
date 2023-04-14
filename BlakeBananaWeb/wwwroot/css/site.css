@@ -1,3 +1,8 @@
+:root {
+    --primary-black: #202020f5;
+    --primary-purple: #BA8EF8;
+}
+
 html {
     font-size: 14px;
 }
@@ -26,26 +31,114 @@ footer {
     font-size: 10px
 }
 
-.header-logo {
-    width: 3%
+.box {
+    border: solid;
+    border-color: var(--primary-black);
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+    box-shadow: 10px 10px 24px 0px rgba(0,0,0,0.75);
 }
+
 
 .navbar-nav.flex-grow-1.account {
     margin-left: 60%;
 }
 
-.product-container {
+#logo {
+    width: 3em !important;
+}
+
+.index, .about, .page {
+    text-align: center;
+}
+
+.index-img-container {
     position: relative;
-    left: -12%;
+    z-index: 1;
     border: solid;
+    border-color: var(--primary-black);
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+    .index-img-container h1 {
+        width:100%;
+        color: floralwhite;
+        background-color: var(--primary-purple);
+        z-index: 2;
+        position: absolute;
+    }
+
+.index .d-grid{
+    margin-top: -1em;
+}
+
+#index-img {
     display: block;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    width: 128%;
+}
+
+.display-4 {
+    border-bottom: solid;
+    border-color: var(--primary-black);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tag-line {
+    color: var(--primary-purple)
+}
+
+.line-custom {
+    margin: 4em;
+    border-bottom: solid;
+    border-color: var(--primary-black);
+}
+
+.review-container {
+    margin-top: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.review {
+    width: 30em;
+    padding: 2%;
+    border: solid;
+    border-radius: 1em;
+    border-color: var(--primary-black);
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+.review img{
+    width: 8em;
+    margin:3%;
+}
+
+.product-container {
+    position: relative;
+    border: solid;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
     .product-container h1 {
         margin: 3%;
+        width: 100%
     }
 
 
@@ -53,13 +146,12 @@ footer {
         color: black
     }
 
+
+
 .products {
     text-decoration: none;
     color: black;
-    width: 30em;
-    display: inline-block;
-    margin-left: 2em;
-    margin-right: 2em;
+    width: 48%;
     margin-bottom: 3em;
     padding: 1em;
     border: solid;
@@ -89,5 +181,91 @@ footer {
     margin-right: auto;
 }
 
-.products h2 {
+.category-title {
+    font-size: 5em !important;
+    text-align: center;
+    padding-top: 1em;
 }
+
+.product-item {
+    align-content: center;
+}
+
+    .product-item h2 {
+        text-align: center;
+    }
+
+.line {
+    border-bottom: solid black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 7em
+}
+
+.individal-product {
+    border: black solid;
+    height: 120%
+}
+
+    .individal-product h1 {
+        margin: 1%;
+        text-align: center;
+    }
+
+    .individal-product img {
+        border: black solid;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-bottom: 5%;
+        width: 60%;
+    }
+
+    .individal-product button {
+        margin-top: 10%;
+    }
+
+.side-details {
+    text-align: center;
+    padding: 2%;
+    border: black solid;
+    float: right;
+}
+
+.product-description {
+    text-align: center;
+    padding: 2%;
+    border: black solid;
+}
+
+.purple{
+    color: var(--primary-purple);
+    border-bottom: solid;
+}
+
+.story {
+    margin-top: 1em;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.story img{
+border: solid;
+    border-color: var(--primary-black);
+    width:50%;
+}
+
+    .story .box p {
+        color: var(--primary-black);
+        font-size: 1.2em;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        padding: 2%;
+        border-top: solid;
+        border-bottom: solid;
+        border-color: var(--primary-purple);
+    }
+
+
