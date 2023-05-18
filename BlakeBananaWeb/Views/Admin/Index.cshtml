@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlakeBananaWeb.Models.Products>
+﻿@model IEnumerable<BlakeBananaWeb.Models.Product>
 @using Microsoft.AspNetCore.Identity
 
 @inject SignInManager<IdentityUser> SignInManager
@@ -10,7 +10,8 @@
     var user = await @UserManager.GetUserAsync(User)!;
 }
 
-
+@if (SignInManager.IsSignedIn(User))
+{
 @if (user.EmailConfirmed == true)
 {
     <h1>Admin</h1>
@@ -56,4 +57,8 @@
 }else{
         <h1>You do not have access to this page!</h1>
     <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Click here to log into an account that does have access!</a>
+}
+}else{
+        <h1>You do not have access to this page!</h1>
+        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Click here to log into an account that does have access!</a>
 }

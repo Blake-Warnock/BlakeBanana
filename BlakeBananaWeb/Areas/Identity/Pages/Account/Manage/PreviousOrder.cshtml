@@ -1,0 +1,51 @@
+﻿@page
+@model PreviousOrderModel
+
+@using BlakeBananaWeb.Areas.Identity.Pages.Account.Manage;
+@using BlakeBananaWeb.Models;
+@{
+    ViewData["Title"] = "Previous Orders";
+    ViewData["ActivePage"] = ManageNavPages.PreviousOrder;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>View your previous orders.</p>
+        <div class="previousOrderContainer">
+            @if(ViewData["list"] == null)
+            {
+
+            }
+            else
+            {
+                @foreach(Item item in (dynamic)ViewData["list"])
+        {
+         <div class="ind-order">
+            <h1>@item.Products.Name</h1>
+                    <img src="/images/products/@item.Products.ImagePath" />
+                    @if (@item.Products.Size == "0")
+                    {
+                        <h2 class="J-price">Price: $@item.Products.Price</h2>
+                    }
+                    else
+                    {
+                         <h2>Price: $@item.Products.Price</h2>
+                        <h2>Size: @item.Products.Size</h2>
+
+                        }
+                        <h2>Quantity: @item.Quantity</h2>
+                        <h2>Item Total Price: $ @(item.Quantity * item.Products.Price)</h2>
+                    <p>@item.Products.Description</p>
+          </div>
+        }
+            }
+        
+        </div> 
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,19 +1,72 @@
-﻿@{
+﻿@model BlakeBananaWeb.Models.Contact
+@{
     ViewData["Title"] = "Contact Page";
 }
 
 <div class="page">
     <h1 class="display-4">Contact Us</h1>
         <h2 class="tag-line">Any questions or concerns?</h2>
-    <div class="information contact">
-    <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h4 class="card-title">Secondary card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+    <div class="row">
+        <div>
+            <form class="contact-form" method="post" asp-action="Contact">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="name" class="control-label">Name</label>
+                    <input asp-for="name" class="form-control" />
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="email" class="control-label">Email</label>
+                    <input asp-for="email" class="form-control" />
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="purpose" class="control-label">Purpose</label>
+                    <input asp-for="purpose" class="form-control" />
+                    <span asp-validation-for="purpose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="message" class="control-label">Message</label>
+                    <input asp-for="message" class="form-control" />
+                    <span asp-validation-for="message" class="text-danger"></span>
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
         </div>
     </div>
-        
-    
+    <div class="card text-white bg-secondary mb-3" style="width: 100%;">
+            <div class="card-header">Phone</div>
+            <div class="card-body">
+                <h4 class="card-title">666-555-4231</h4>
+                <p class="card-text">Sunday, 8am - 4:30m ET</p>
+                <p class="card-text">Monday - Thursday, 8am - 8pm ET</p>
+                <p class="card-text">Friday - Saturday, 8am - 6:30pm ET</p>
+            </div>
+        </div>
+       
+    <div class="row">
+        <div class="card text-white bg-secondary mb-3" style="width: 100%;">
+        <div class="card-header">Email</div>
+        <div class="card-body">
+            <h4 class="card-title">blakebanana@banana.com</h4>
+        </div>
+    </div>
+    </div>
+     <div class="row">
+        <div class="card text-white bg-secondary mb-3" style="width: 100%;">
+        <div class="card-header">Mail</div>
+        <div class="card-body">
+                <h4 class="card-title">135 Banana Way</h4>
+                <h4 class="card-title">Banana, New Mexico</h4>
+                <h4 class="card-title">896532</h4>
+        </div>
+    </div>
+    </div>
 </div>
+
+  
+    

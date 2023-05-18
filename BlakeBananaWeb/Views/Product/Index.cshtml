@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Products>
+﻿@model IEnumerable<Product>
 @{
     ViewData["Title"] = "Index";
 }
@@ -11,9 +11,9 @@
     {
         <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
            
-                <h1>@obj.Name</h1>
+                <h1>Blake's Bananas @obj.Name</h1>
                 <div class="product-item">
-                    <img src="@obj.ImagePath" />
+                    <img src="/images/products/@obj.ImagePath" />
                     @if (@obj.Size == "0")
                     {
                         <h2 class="J-price">Price: $@obj.Price</h2>
@@ -37,7 +37,7 @@
             <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
             <h1>@obj.Name</h1>
                 <div class="product-item">
-                    <img src="@obj.ImagePath" />
+                    <img src="/images/products/@obj.ImagePath" />
                     @if (@obj.Size == "0")
                     {
                         <h2 class="J-price">Price: $@obj.Price</h2>
@@ -58,7 +58,7 @@
             <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
                 <h1>@obj.Name</h1>
                 <div class="product-item">
-                    <img src="@obj.ImagePath" />
+                    <img src="/images/products/@obj.ImagePath" />
                     @if (@obj.Size == "0")
                     {
                         <h2 class="J-price">Price: $@obj.Price</h2>
@@ -79,7 +79,7 @@
             <a asp-action="ViewProduct" asp-route-id="@obj.Id" class="products">
                 <h1>@obj.Name</h1>
                 <div class="product-item">
-                    <img src="@obj.ImagePath" />
+                    <img src="/images/products/@obj.ImagePath" />
                     @if (@obj.Size == "0")
                     {
                         <h2 class="J-price">Price: $@obj.Price</h2>

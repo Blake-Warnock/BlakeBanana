@@ -1,16 +1,21 @@
-﻿using BlakeBananaWeb.Models;
+﻿using BlakeBananaWeb.Data;
+using BlakeBananaWeb.Models;
+using EnvDTE;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+
 
 namespace BlakeBananaWeb.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ContactDb _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ContactDb context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -23,11 +28,30 @@ namespace BlakeBananaWeb.Controllers
             return View();
         }
 
+        //GET
         public IActionResult Contact()
         {
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //Post
+        public IActionResult Contact(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(contact);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Thanks));
+            }
+            return View(contact);
+        }
+
+        public IActionResult Thanks()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

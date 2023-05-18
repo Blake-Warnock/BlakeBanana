@@ -1,0 +1,91 @@
+using Microsoft.AspNetCore.Http;
+using BlakeBananaWeb.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http.Extensions;
+
+namespace BlakeBananaWeb.Controllers
+{
+    public class CartController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult throwAway()
+
+        {
+
+            // Get the session ID
+
+            var sessionId = HttpContext.Session.Id;
+
+
+
+            // Set a value in the session
+
+            HttpContext.Session.SetString("MyValue", "Hello World!");
+
+
+
+            // Get a value from the session
+
+            var myValue = HttpContext.Session.GetString("MyValue");
+
+
+
+            // ...
+            return View();
+
+        }
+
+        public ActionResult Buy(string id)
+        {
+
+
+            ProductModel productModel = new ProductModel();
+            if (cartSession == null)
+            {
+                List<Item> cart = new List<Item>();
+                cart.Add(new Item { Products = productModel.find(id), Quantity = 1 });
+                HttpContext.Session.Set<List<Item>>("cart", cart);
+                HttpContext.Session.SetString("cart", cart));
+            }
+            else
+            {
+                List<Item> cart = (List<Item>)Session["cart"];
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    cart[index].Quantity++;
+                }
+                else
+                {
+                    cart.Add(new Item { Products = productModel.find(id), Quantity = 1 });
+                }
+                Session["cart"] = cart;
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Remove(string id)
+        {
+            List<Item> cart = (List<Item>)ISession["cart"];
+            int index = isExist(id);
+            cart.RemoveAt(index);
+            Session["cart"] = cart;
+            return RedirectToAction("Index");
+        }
+
+        private int isExist(string id)
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            for (int i = 0; i < cart.Count; i++)
+                if (cart[i].Product.Id.Equals(id))
+                    return i;
+            return -1;
+        }
+
+    }
+}

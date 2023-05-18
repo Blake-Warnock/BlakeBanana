@@ -1,16 +1,20 @@
-﻿@model BlakeBananaWeb.Models.Products
+﻿@model BlakeBananaWeb.Models.Product
 @{
     
 }
     <div class="individal-product">
         <h1>@Html.DisplayFor(model => model.Name)</h1>
-        <img src="/images/@Html.DisplayFor(model => model.ImagePath)"/>
+        <img src="/images/products/@Html.DisplayFor(model => model.ImagePath)"/>
         <div class="side-details">
+
         <h2>Price $@Html.DisplayFor(model => model.Price)</h2>
         <div class="line"></div>
-        <h2>Size @Html.DisplayFor(model => model.Size)</h2>
-        <div class="line"></div>
-        <button>Add to Cart</button>
+        @if (Model.Size != "0")
+        {
+            <h2>Size @Html.DisplayFor(model => model.Size)</h2>
+            <div class="line"></div>
+        }
+        <button class="ButtonOne"><a href="@Url.Action("Buy", "Cart", Model)">Buy Now</a></button>
         </div>
         <div class="product-description">
         <h2>@Html.DisplayFor(model => model.Description)</h2>

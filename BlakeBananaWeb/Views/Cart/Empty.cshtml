@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using BlakeBananaWeb.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+    
+    <div class="product-container empty">
+        <h1>Your Cart is still empty but take a look at these hot items</h1>
+    @foreach (Product product in ViewBag.Products)
+    {
+            <a asp-controller="Product" asp-action="ViewProduct" asp-route-id="@product.Id" class="products">
+
+            <h1>@product.Name</h1>
+                    <div class="product-item">
+                <img src="/images/products/@product.ImagePath" />
+                @if (@product.Size == "0")
+                {
+                    <h2 class="J-price">Price: $@product.Price</h2>
+                }
+                else
+                {
+                    <h2>Price: $@product.Price</h2>
+                                <div class="line"></div>
+                    <h2>Size: @product.Size</h2>
+                }
+                <p>@product.Description</p>
+                    </div>
+            </a>
+    }
+    </div>
+</body>
+</html>

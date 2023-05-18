@@ -20,22 +20,21 @@ namespace BlakeBananaWeb.Controllers
         }
 
         // GET: Admin
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-              return _context.Products != null ? 
-                          View(await _context.Products.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Products'  is null.");
+            IEnumerable<Product> ProductList = _context.Product;
+            return View(ProductList);
         }
 
         // GET: Admin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Product == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Products
+            var products = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (products == null)
             {
@@ -51,31 +50,29 @@ namespace BlakeBananaWeb.Controllers
             return View();
         }
 
-        // POST: Admin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price")] Products products)
+        public IActionResult Create(Product products)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(products);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(products);
         }
 
         // GET: Admin/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Product == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Products.FindAsync(id);
+            var products = _context.Product.Find(id);
             if (products == null)
             {
                 return NotFound();
@@ -83,36 +80,19 @@ namespace BlakeBananaWeb.Controllers
             return View(products);
         }
 
-        // POST: Admin/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //POST
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price")] Products products)
+        public IActionResult Edit(Product products)
         {
-            if (id != products.Id)
-            {
-                return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(products);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductsExists(products.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                _context.Product.Update(products);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(products);
@@ -121,12 +101,12 @@ namespace BlakeBananaWeb.Controllers
         // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Product == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Products
+            var products = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (products == null)
             {
@@ -141,23 +121,23 @@ namespace BlakeBananaWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Products == null)
+            if (_context.Product == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
             }
-            var products = await _context.Products.FindAsync(id);
+            var products = await _context.Product.FindAsync(id);
             if (products != null)
             {
-                _context.Products.Remove(products);
+                _context.Product.Remove(products);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductsExists(int id)
         {
-          return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Product?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

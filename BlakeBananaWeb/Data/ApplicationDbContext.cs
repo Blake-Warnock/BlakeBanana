@@ -12,6 +12,7 @@ namespace BlakeBananaWeb.Data
 
         }
 
-        public DbSet<Products> Products { get; set; }
+        public DbSet<Product> Product { get; set; }
+
     }
 }
